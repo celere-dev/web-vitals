@@ -21,8 +21,8 @@ export function celereReport(report: string): void {
 
   const emailContent = `
   URL: ${content.finalDisplayedUrl}<br>
-  Índice: ${content.categories.performance.score * 100}<br>
-  Data e hora: ${formattedDate}<br><br>
+  Score: ${content.categories.performance.score * 100}<br>
+  Horário: ${formattedDate}<br><br>
   Este é um e-mail automático.
   `;
 

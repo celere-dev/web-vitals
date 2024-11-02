@@ -21,7 +21,7 @@ if (URL) {
     .then(() => {
       logging("Done.");
 
-      Deno.exit(0); // Fix ./modules/getLighthouseReport.js:29
+      // Deno.exit(0); // Fix ./modules/getLighthouseReport.js:29
     })
     .catch((error) => {
       console.error(error);

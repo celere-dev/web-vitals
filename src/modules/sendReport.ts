@@ -7,6 +7,7 @@ export function sendReport(content: string): void {
   const RESEND_EMAIL_FROM = Deno.env.get("RESEND_EMAIL_FROM");
   const RESEND_EMAIL_TO = Deno.env.get("RESEND_EMAIL_TO");
   const RESEND_SUBJECT = Deno.env.get("RESEND_SUBJECT");
+  const SCHEDULED_AT = Deno.env.get("SCHEDULED_AT");
 
   const handler = async (_request: Request): Promise<Response> => {
     const res = await fetch("https://api.resend.com/emails", {
@@ -20,6 +21,7 @@ export function sendReport(content: string): void {
         to: RESEND_EMAIL_TO,
         subject: RESEND_SUBJECT,
         html: content,
+        scheduledAt: SCHEDULED_AT,
       }),
     });
 
