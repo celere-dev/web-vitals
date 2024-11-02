@@ -1,4 +1,4 @@
-import { createReportDirPath } from "./utils/utils.ts";
+import { createReportDirPath, logging } from "./utils/utils.ts";
 import { lhReport } from "./modules/getLighthouseReport.ts";
 import { celereReport } from "./modules/generateCelereReport.ts";
 
@@ -13,12 +13,16 @@ const url = new URL("https://claromes.com");
 const hostname = url.host;
 const filePath = `./report/${hostname}_lhreport.json`;
 
+logging("Building...");
+
 createReportDirPath();
 buildReport({ url: url.href, filePath })
   .then(() => {
+    logging("Done.");
+
     Deno.exit(0); // Fix ./modules/getLighthouseReport.js:29
   })
   .catch((error) => {
-    console.error("Error in buildReport:", error);
+    console.error(error);
     Deno.exit(1);
   });
