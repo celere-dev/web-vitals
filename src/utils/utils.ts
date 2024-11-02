@@ -1,7 +1,7 @@
 import { ensureDir, existsSync } from "@std/fs";
 import { join, dirname, fromFileUrl } from "@std/path";
 
-export async function createReportDirPath() {
+export async function createReportDirPath(): Promise<string> {
   const __dirname = dirname(fromFileUrl(import.meta.url));
   const dirPath = join(__dirname, "./../../report");
 
