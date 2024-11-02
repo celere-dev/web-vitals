@@ -1,22 +1,21 @@
-import { createReportDirPath, logging } from "./utils/utils.ts";
-import { lhReport } from "./modules/getLighthouseReport.ts";
-import { celereReport } from "./modules/generateCelereReport.ts";
+import { logging } from "./utils/utils.ts";
+import { lighthouseReport } from "./modules/lighthouseReport.ts";
+import { celereReport } from "./modules/celereReport.ts";
 
-import { Attributes } from "./types/types.ts";
+async function buildReport(url: string): Promise<void> {
+  const report = await lighthouseReport(url);
 
-async function buildReport(attributes: Attributes): Promise<void> {
-  await lhReport({ url: attributes.url, filePath: attributes.filePath });
-  await celereReport({ filePath: attributes.filePath });
+  if (report) {
+    celereReport(report);
+  }
 }
 
 const url = new URL("https://claromes.com");
-const hostname = url.host;
-const filePath = `./report/${hostname}_lhreport.json`;
+const urlString = url.toString();
 
 logging("Building...");
 
-createReportDirPath();
-buildReport({ url: url.href, filePath })
+buildReport(urlString)
   .then(() => {
     logging("Done.");
 
