@@ -2,14 +2,20 @@
   "version": "4",
   "specifiers": {
     "jsr:@std/datetime@~0.225.2": "0.225.2",
+    "jsr:@std/dotenv@*": "0.225.2",
+    "jsr:@std/dotenv@~0.225.2": "0.225.2",
     "jsr:@std/fs@^1.0.5": "1.0.5",
     "jsr:@std/path@^1.0.7": "1.0.7",
+    "npm:@types/node@*": "22.5.4",
     "npm:chrome-launcher@*": "1.1.2",
     "npm:lighthouse@*": "12.2.1"
   },
   "jsr": {
     "@std/datetime@0.225.2": {
       "integrity": "45f0100554a912cd65f48089ef0a33aa1eb6ea21f08090840b539ab582827eaa"
+    },
+    "@std/dotenv@0.225.2": {
+      "integrity": "e2025dce4de6c7bca21dece8baddd4262b09d5187217e231b033e088e0c4dd23"
     },
     "@std/fs@1.0.5": {
       "integrity": "41806ad6823d0b5f275f9849a2640d87e4ef67c51ee1b8fb02426f55e02fd44e",
@@ -843,6 +849,7 @@
   "workspace": {
     "dependencies": [
       "jsr:@std/datetime@~0.225.2",
+      "jsr:@std/dotenv@~0.225.2",
       "jsr:@std/fs@^1.0.5",
       "jsr:@std/path@^1.0.7"
     ]

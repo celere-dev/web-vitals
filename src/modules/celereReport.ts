@@ -20,9 +20,9 @@ export function celereReport(report: string): void {
   const formattedDate = format(date, "dd/MM/yyyy HH:mm");
 
   const emailContent = `
-  URL: ${content.finalDisplayedUrl}\n
-  Índice: ${content.categories.performance.score * 100}\n
-  Data e hora: ${formattedDate}\n\n
+  URL: ${content.finalDisplayedUrl}<br>
+  Índice: ${content.categories.performance.score * 100}<br>
+  Data e hora: ${formattedDate}<br><br>
   Este é um e-mail automático.
   `;
 
