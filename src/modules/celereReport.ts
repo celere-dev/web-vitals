@@ -20,6 +20,23 @@ export interface CelereReport {
       score: number;
     };
   };
+  audits: {
+    "largest-contentful-paint": {
+      displayValue: string;
+    };
+    "cumulative-layout-shift": {
+      displayValue: string;
+    };
+    "first-contentful-paint": {
+      displayValue: string;
+    };
+    "server-response-time": {
+      displayValue: string;
+    };
+    "total-blocking-time": {
+      displayValue: string;
+    };
+  };
 }
 
 export function celereReport(report: string): void {
@@ -36,6 +53,12 @@ export function celereReport(report: string): void {
   const bestPractices = content.categories["best-practices"].score * 100;
   const seo = content.categories.seo.score * 100;
 
+  const lcp = content.audits["largest-contentful-paint"].displayValue;
+  const cls = content.audits["cumulative-layout-shift"].displayValue;
+  const fcp = content.audits["first-contentful-paint"].displayValue;
+  const ttfb = content.audits["server-response-time"].displayValue;
+  const tbt = content.audits["total-blocking-time"].displayValue;
+
   const emailSubject = `${hostname} | Desempenho: ${performance} | Core Web Vitals: `;
 
   const emailContent = `
@@ -44,10 +67,11 @@ export function celereReport(report: string): void {
   Criação do relatório: ${formattedDate}
 
   - Experiência dos seus usuários
-  Core Web Vitals:
-  LCP:
-  INP:
-  FCP:
+  Largest Contentful Paint (LCP): (${lcp})
+  Cumulative Layout Shift (CLS): (${cls})
+  First Contentful Paint (FCP): (${fcp})
+  Time to First Byte (TTFB): ${ttfb}
+  Total Blocking Time (TBT): (${tbt})
 
   - Diagnosticar problemas de desempenho
   Desempenho: ${performance}
