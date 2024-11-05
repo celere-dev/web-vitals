@@ -14,7 +14,6 @@ export async function lighthouseReport(
     logLevel: "silent",
     output: "json",
     disableFullPageScreenshot: true,
-    onlyCategories: ["performance"],
     port: chrome.port,
   };
 
