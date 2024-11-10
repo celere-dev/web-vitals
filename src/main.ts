@@ -22,7 +22,7 @@ async function buildReport(url: string): Promise<void> {
   }
 }
 
-const URL = Deno.env.get("URL");
+const URL = Deno.env.get("URLS");
 
 if (URL) {
   logging("Building...");
