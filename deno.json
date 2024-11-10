@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "build": "deno run --allow-read --allow-write --allow-env --allow-net --allow-run ./src/main.ts"
+    "build": "deno run --allow-read --allow-write --allow-env --allow-net --allow-run --allow-sys ./src/main.ts"
   },
   "imports": {
     "@std/datetime": "jsr:@std/datetime@^0.225.2",
