@@ -1,7 +1,6 @@
 import { format } from "@std/datetime";
 
 import { logging } from "./../utils/utils.ts";
-import { sendReport } from "./sendReport.ts";
 import { webVitalsLabels } from "./../utils/webVitalsLabels.ts";
 
 export interface CelereReport {
@@ -40,7 +39,7 @@ export interface CelereReport {
   };
 }
 
-export function celereReport(report: string): void {
+export function celereReport(report: string): string[] | undefined {
   const content: CelereReport = JSON.parse(report);
 
   // Info
@@ -75,8 +74,8 @@ export function celereReport(report: string): void {
   const seo = content.categories.seo.score * 100;
 
   // Email Content
-  const emailSubject = `${hostname} - Core Web Vitals: ${labels.cwv} - Desempenho: ${performance}`;
-  const emailBody = `
+  const subject = `${hostname} - Core Web Vitals: ${labels.cwv} - Desempenho: ${performance}`;
+  const body = `
   URL: ${content.finalDisplayedUrl}<br>
   Criação do relatório: ${formattedDate}<br><br>
 
@@ -100,6 +99,6 @@ export function celereReport(report: string): void {
   if (content) {
     logging("Text report generated.");
 
-    sendReport(emailSubject, emailBody);
+    return [subject, body];
   }
 }

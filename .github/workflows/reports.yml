@@ -1,0 +1,33 @@
+name: LH Reports via Resend
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+jobs:
+  reports:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v4
+
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+
+      - name: Install Deno dependencies
+        run: deno install
+
+      - name: Deno build
+        run: deno task build
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          RESEND_EMAIL_FROM: ${{ secrets.RESEND_EMAIL_FROM }}
+          RESEND_EMAIL_TO: ${{ secrets.RESEND_EMAIL_TO }}
+          URLS: ${{ secrets.URLS }}
