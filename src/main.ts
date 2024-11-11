@@ -5,7 +5,7 @@ import { lighthouseReport } from "./modules/lighthouseReport.ts";
 import { celereReport } from "./modules/celereReport.ts";
 import { sendReport } from "./modules/sendReport.ts";
 
-async function buildReport(url: string): Promise<void> {
+async function build(url: string): Promise<void> {
   const report = await lighthouseReport(url);
 
   let result;
@@ -22,19 +22,22 @@ async function buildReport(url: string): Promise<void> {
   }
 }
 
-const URL = Deno.env.get("URLS");
+const URLS = JSON.parse(Deno.env.get("URLS") || "[]") as string[];
 
-if (URL) {
-  logging("Building...");
+async function run() {
+  for (const url of URLS) {
+    logging("Building...");
 
-  buildReport(URL)
-    .then(() => {
+    try {
+      await build(url);
       logging("Done.");
-
-      Deno.exit(0); // Fix ./modules/getLighthouseReport.js:29
-    })
-    .catch((error) => {
+    } catch (error) {
       console.error(error);
       Deno.exit(1);
-    });
+    }
+  }
+
+  Deno.exit(0); // Fix ./modules/getLighthouseReport.js:32
 }
+
+run();
