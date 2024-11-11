@@ -5,7 +5,7 @@ import { logging } from "./../utils/utils.ts";
 
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 const RESEND_EMAIL_FROM = Deno.env.get("RESEND_EMAIL_FROM") as string;
-const RESEND_EMAIL_TO = Deno.env.get("RESEND_EMAIL_TO") as string;
+const RESEND_EMAIL_TO = JSON.parse(Deno.env.get("RESEND_EMAIL_TO") as string);
 
 export async function sendReport(subject: string, text: string): Promise<void> {
   const resend = new Resend(RESEND_API_KEY);
