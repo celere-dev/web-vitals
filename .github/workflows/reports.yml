@@ -1,10 +1,9 @@
 name: LH Reports via Resend
 
 on:
-  push:
-    branches: ["main"]
-  pull_request:
-    branches: ["main"]
+  schedule:
+    - cron: "0 11 * * 1"
+  workflow_dispatch:
 
 permissions:
   contents: read
