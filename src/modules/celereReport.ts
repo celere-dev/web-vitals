@@ -75,30 +75,30 @@ export function celereReport(report: string): string[] | undefined {
 
   // Email Content
   const subject = `${hostname} - Core Web Vitals: ${labels.cwv} - Desempenho: ${performance}`;
-  const body = `
-  URL: ${content.finalDisplayedUrl}<br>
-  Criação do relatório: ${formattedDate}<br><br>
+  const text = `
+URL: ${content.finalDisplayedUrl}
+Criação do relatório: ${formattedDate}
 
-  - Web Vitals -<br>
-  Core Web Vitals (LCP, CLS, TBT): ${labels.cwv}<br>
-  Largest Contentful Paint (LCP): ${labels.lcp}<br>
-  Cumulative Layout Shift (CLS): ${labels.cls}<br>
-  First Contentful Paint (FCP): ${labels.fcp}<br>
-  Total Blocking Time (TBT): ${labels.tbt}<br>
-  Time to First Byte (TTFB): ${labels.ttfb}<br><br>
+- Web Vitals -
+Core Web Vitals (LCP, CLS, TBT): ${labels.cwv}
+Largest Contentful Paint (LCP): ${labels.lcp}
+Cumulative Layout Shift (CLS): ${labels.cls}
+First Contentful Paint (FCP): ${labels.fcp}
+Total Blocking Time (TBT): ${labels.tbt}
+Time to First Byte (TTFB): ${labels.ttfb}
 
-  - Pontuações -<br>
-  Desempenho: ${performance}<br>
-  Acessibilidade: ${accessibility}<br>
-  Práticas recomendadas: ${bestPractices}<br>
-  SEO: ${seo}<br><br>
+- Pontuações -
+Desempenho: ${performance}
+Acessibilidade: ${accessibility}
+Práticas recomendadas: ${bestPractices}
+SEO: ${seo}
 
-  Este relatório é gerado em um ambiente simulado sem um usuário.
+Este relatório é gerado em um ambiente simulado sem um usuário.
   `;
 
   if (content) {
     logging("Text report generated.");
 
-    return [subject, body];
+    return [subject, text];
   }
 }

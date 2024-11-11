@@ -1,30 +1,26 @@
+import { Resend } from "npm:resend";
 import "@std/dotenv/load";
 
 import { logging } from "./../utils/utils.ts";
 
-export async function sendReport(subject: string, body: string): Promise<void> {
-  const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
-  const RESEND_EMAIL_FROM = Deno.env.get("RESEND_EMAIL_FROM");
-  const RESEND_EMAIL_TO = Deno.env.get("RESEND_EMAIL_TO");
+const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+const RESEND_EMAIL_FROM = Deno.env.get("RESEND_EMAIL_FROM") as string;
+const RESEND_EMAIL_TO = Deno.env.get("RESEND_EMAIL_TO") as string;
 
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${RESEND_API_KEY}`,
-    },
-    body: JSON.stringify({
-      from: RESEND_EMAIL_FROM,
-      to: RESEND_EMAIL_TO,
-      subject: subject,
-      html: body,
-    }),
+export async function sendReport(subject: string, text: string): Promise<void> {
+  const resend = new Resend(RESEND_API_KEY);
+
+  const { error } = await resend.emails.send({
+    from: RESEND_EMAIL_FROM,
+    to: RESEND_EMAIL_TO,
+    subject: subject,
+    text: text,
   });
 
-  if (res.ok) {
-    logging("E-mail sent.");
-  } else {
-    const error = await res.text();
-    logging(`Failed to send email: ${error}`);
+  if (error) {
+    logging(`Failed to send email: ${JSON.stringify(error)}`);
+    return;
   }
+
+  logging("E-mail sent.");
 }
