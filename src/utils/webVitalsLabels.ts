@@ -65,11 +65,7 @@ export function webVitalsLabels(metrics: number[]): Labels {
   const clsCWV = metrics[1] <= 0.1;
   const tbtCWV = metrics[3] <= 600;
 
-  if (lcpCWV && clsCWV && tbtCWV) {
-    cwv = "aprovado";
-  } else {
-    cwv = "reprovado";
-  }
+  cwv = lcpCWV && clsCWV && tbtCWV ? "aprovado" : "reprovado";
 
   return {
     lcp: lcp,

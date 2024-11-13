@@ -59,6 +59,7 @@ export function celereReport(report: string): string[] | undefined {
   // Web Vitals Labels
   const labels = webVitalsLabels([lcp, cls, fcp, tbt, ttfb]);
 
+  // Debug
   // const lcp2 = content.audits["largest-contentful-paint"].displayValue;
   // const cls2 = content.audits["cumulative-layout-shift"].displayValue;
   // const fcp2 = content.audits["first-contentful-paint"].displayValue;
