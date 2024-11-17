@@ -1,7 +1,9 @@
 import { format } from "@std/datetime";
 
-import { logging } from "./../utils/utils.ts";
-import { webVitalsLabels } from "./../utils/webVitalsLabels.ts";
+import logging from "./../utils/logging.ts";
+import translate from "./../utils/translate.ts";
+
+import webVitalsLabels from "./../utils/webVitalsLabels.ts";
 
 export interface CelereReport {
   fetchTime: string;
@@ -75,10 +77,12 @@ export function celereReport(report: string): string[] | undefined {
   const seo = content.categories.seo.score * 100;
 
   // Email Content
-  const subject = `${hostname} - Core Web Vitals: ${labels.cwv} - Desempenho: ${performance}`;
+  const subject = `${hostname} - Core Web Vitals: ${labels.cwv} - ${translate(
+    "performance"
+  )}: ${performance}`;
   const text = `
 URL: ${content.finalDisplayedUrl}
-Criação do relatório: ${formattedDate}
+${translate("createdOn")}: ${formattedDate}
 
 - Web Vitals -
 Core Web Vitals (LCP, CLS, TBT): ${labels.cwv}
@@ -88,17 +92,17 @@ First Contentful Paint (FCP): ${labels.fcp}
 Total Blocking Time (TBT): ${labels.tbt}
 Time to First Byte (TTFB): ${labels.ttfb}
 
-- Pontuações -
-Desempenho: ${performance}
-Acessibilidade: ${accessibility}
-Práticas recomendadas: ${bestPractices}
+- ${translate("scores")} -
+${translate("performance")}: ${performance}
+${translate("accessibility")}: ${accessibility}
+${translate("bestPractices")}: ${bestPractices}
 SEO: ${seo}
 
-Este relatório é gerado em um ambiente simulado sem um usuário.
+${translate("disclaimer")}
   `;
 
   if (content) {
-    logging("Text report generated.");
+    logging(translate("emailText"));
 
     return [subject, text];
   }

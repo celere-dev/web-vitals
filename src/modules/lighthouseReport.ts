@@ -1,12 +1,13 @@
 import lighthouse, { RunnerResult, Flags } from "npm:lighthouse";
 import * as chromeLauncher from "npm:chrome-launcher";
 
-import { logging } from "./../utils/utils.ts";
+import logging from "./../utils/logging.ts";
+import translate from "./../utils/translate.ts";
 
 export async function lighthouseReport(
   url: string
 ): Promise<string | undefined> {
-  logging("Launching Chrome...");
+  logging(translate("launching"));
 
   const chrome = await chromeLauncher.launch({ chromeFlags: ["--headless"] });
 
@@ -17,12 +18,12 @@ export async function lighthouseReport(
     port: chrome.port,
   };
 
-  logging("Setting options...");
+  logging(translate("setting"));
 
   const runnerResult: RunnerResult | undefined = await lighthouse(url, options);
 
   if (runnerResult) {
-    logging("Lighthouse report generated.");
+    logging(translate("lighthouseReportGenerated"));
 
     const reportJSON: string = runnerResult.report as string;
 

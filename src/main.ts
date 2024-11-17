@@ -1,6 +1,8 @@
 import "@std/dotenv/load";
 
-import { logging } from "./utils/utils.ts";
+import logging from "./utils/logging.ts";
+import translate from "./utils/translate.ts";
+
 import { lighthouseReport } from "./modules/lighthouseReport.ts";
 import { celereReport } from "./modules/celereReport.ts";
 import { sendReport } from "./modules/sendReport.ts";
@@ -26,18 +28,18 @@ const URLS = JSON.parse(Deno.env.get("URLS") || "[]") as string[];
 
 async function run() {
   for (const url of URLS) {
-    logging("Building...");
+    logging(translate("building"));
 
     try {
       await build(url);
-      logging("Done.");
+      logging(translate("done"));
     } catch (error) {
       console.error(error);
       Deno.exit(1);
     }
   }
 
-  Deno.exit(0); // Fix ./modules/getLighthouseReport.js:32
+  Deno.exit(0); // Fix ./modules/lighthouseReport.ts:33
 }
 
 run();
