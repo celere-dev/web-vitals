@@ -1,4 +1,4 @@
-name: LH Reports via Resend
+name: Lighthouse reports via Resend
 
 on:
   schedule:
@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Setup repo
+      - name: Setup repository
         uses: actions/checkout@v4
 
       - uses: denoland/setup-deno@v2
@@ -30,3 +30,4 @@ jobs:
           RESEND_EMAIL_FROM: ${{ secrets.RESEND_EMAIL_FROM }}
           RESEND_EMAIL_TO: ${{ secrets.RESEND_EMAIL_TO }}
           URLS: ${{ secrets.URLS }}
+          LOCALE: ${{ secrets.LOCALE }}
