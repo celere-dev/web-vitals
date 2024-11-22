@@ -71,10 +71,15 @@ export function celereReport(report: string): string[] | undefined {
   // console.log([lcp2, cls2, fcp2, tbt2, ttfb2]);
 
   // Scores
-  const performance = content.categories.performance.score * 100;
-  const accessibility = content.categories.accessibility.score * 100;
-  const bestPractices = content.categories["best-practices"].score * 100;
-  const seo = content.categories.seo.score * 100;
+  const performance = Math.round(content.categories.performance.score * 100);
+  const accessibility = Math.round(
+    content.categories.accessibility.score * 100
+  );
+  const bestPractices = Math.round(
+    content.categories["best-practices"].score * 100
+  );
+
+  const seo = Math.round(content.categories.seo.score * 100);
 
   // Email Content
   const subject = `${hostname} - Core Web Vitals: ${labels.cwv} - ${translate(
