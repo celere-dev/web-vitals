@@ -15,7 +15,6 @@ export default function webVitalsLabels(metrics: number[]): Labels {
   let fcp = "";
   let tbt = "";
   let ttfb = "";
-  let cwv = "";
 
   // LCP
   if (metrics[0] / 1000 <= 2.5) {
@@ -67,7 +66,8 @@ export default function webVitalsLabels(metrics: number[]): Labels {
   const clsCWV = metrics[1] <= 0.1;
   const tbtCWV = metrics[3] <= 600;
 
-  cwv = lcpCWV && clsCWV && tbtCWV ? translate("passed") : translate("failed");
+  const cwv =
+    lcpCWV && clsCWV && tbtCWV ? translate("passed") : translate("failed");
 
   return {
     lcp: lcp,
