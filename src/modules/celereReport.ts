@@ -48,8 +48,17 @@ export function celereReport(report: string): string[] | undefined {
   const url = new URL(content.finalDisplayedUrl);
   const hostname = url.host;
 
+  // Date
   const date = new Date(content.fetchTime);
-  const formattedDate = format(date, "dd/MM/yyyy, HH:mm:ss");
+  let formattedDate;
+
+  const currLocale = Deno.env.get("LOCALE");
+
+  if (currLocale === "en") {
+    formattedDate = format(date, "MM/dd/yyyy, HH:mm:ss");
+  } else if (currLocale === "pt-BR") {
+    formattedDate = format(date, "dd/MM/yyyy, HH:mm:ss");
+  }
 
   // Web Vitals
   const lcp = content.audits["largest-contentful-paint"].numericValue;
@@ -60,15 +69,6 @@ export function celereReport(report: string): string[] | undefined {
 
   // Web Vitals Labels
   const labels = webVitalsLabels([lcp, cls, fcp, tbt, ttfb]);
-
-  // Debug
-  // const lcp2 = content.audits["largest-contentful-paint"].displayValue;
-  // const cls2 = content.audits["cumulative-layout-shift"].displayValue;
-  // const fcp2 = content.audits["first-contentful-paint"].displayValue;
-  // const tbt2 = content.audits["total-blocking-time"].displayValue;
-  // const ttfb2 = content.audits["server-response-time"].displayValue;
-  // console.log([lcp, cls, fcp, tbt, ttfb]);
-  // console.log([lcp2, cls2, fcp2, tbt2, ttfb2]);
 
   // Scores
   const performance = Math.round(content.categories.performance.score * 100);
