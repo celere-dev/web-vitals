@@ -28,7 +28,7 @@ Performance scores are also provided:
 
 Additionally, the application supports:
 
-- Setting the text language (currently available in English (`en`) and Brazilian Portuguese (`pt-BR`))
+- Setting the text language. Currently available in English (`en`) and Brazilian Portuguese (`pt-BR`)
 - Analyzing multiple websites
 - Sending reports to multiple recipients
 - Configuring sender, recipients, websites, and language (locale) via environment variables

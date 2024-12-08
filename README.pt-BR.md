@@ -28,7 +28,7 @@ Pontuações de desempenho também são fornecidas:
 
 Além disso, a aplicação suporta:
 
-- Configuração do idioma do texto (atualmente disponível em inglês (`en`) e português brasileiro (`pt-BR`))
+- Configuração do idioma do texto. Atualmente disponível em inglês (`en`) e português brasileiro (`pt-BR`)
 - Análise de múltiplos sites
 - Envio de relatórios para múltiplos destinatários
 - Configuração do remetente, destinatários, sites e idioma (locale) via variáveis de ambiente
