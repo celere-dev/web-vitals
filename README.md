@@ -97,7 +97,7 @@ This report is generated in a simulated environment without a user.
 
 ### Requirements
 
-- Deno 2.06+
+- Deno 2.0.6+
 - Google Chrome 131+
 - Resend API Key
 

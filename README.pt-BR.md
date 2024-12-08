@@ -97,7 +97,7 @@ Este relatório é gerado em um ambiente simulado sem um usuário.
 
 ### Requisitos
 
-- Deno 2.06+
+- Deno 2.0.6+
 - Google Chrome 131+
 - Chave de API do Resend
 
