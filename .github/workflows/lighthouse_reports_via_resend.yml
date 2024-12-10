@@ -23,8 +23,8 @@ jobs:
       - name: Install Deno dependencies
         run: deno install
 
-      - name: Deno build
-        run: deno task build
+      - name: Deno send
+        run: deno task send
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           RESEND_EMAIL_FROM: ${{ secrets.RESEND_EMAIL_FROM }}
