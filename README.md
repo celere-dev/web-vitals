@@ -90,7 +90,7 @@ Accessibility: 82
 Best Practices: 100
 SEO: 100
 
-This report is generated in a simulated environment without a user.
+This report is generated in a simulated environment without a real user.
 ```
 
 ## Development

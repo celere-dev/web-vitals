@@ -82,15 +82,15 @@ export function celereReport(report: string): string[] | undefined {
   const seo = Math.round(content.categories.seo.score * 100);
 
   // Email Content
-  const subject = `${hostname} - Core Web Vitals: ${labels.cwv} - ${translate(
+  const subject = `${translate(
     "performance"
-  )}: ${performance}`;
+  )}: ${performance} - CWV: ${labels.cwv} - ${hostname}`;
   const text = `
 URL: ${content.finalDisplayedUrl}
 ${translate("createdOn")}: ${formattedDate}
 
 - Web Vitals -
-Core Web Vitals (LCP, CLS, TBT): ${labels.cwv}
+Core Web Vitals (CWV) [LCP, CLS, TBT]: ${labels.cwv}
 Largest Contentful Paint (LCP): ${labels.lcp}
 Cumulative Layout Shift (CLS): ${labels.cls}
 First Contentful Paint (FCP): ${labels.fcp}

@@ -90,7 +90,7 @@ Acessibilidade: 82
 Práticas recomendadas: 100
 SEO: 100
 
-Este relatório é gerado em um ambiente simulado sem um usuário.
+Este relatório é gerado em um ambiente simulado sem um usuário real.
 ```
 
 ## Desenvolvimento
