@@ -68,7 +68,7 @@ To use this workflow, you need to configure the following environment variables 
 
 Subject:
 ```
-example.com - Core Web Vitals: failed - Performance: 56
+Performance: 56 - CWV: failed - example.com
 ```
 
 Text:
@@ -77,7 +77,7 @@ URL: https://example.com
 Created on: 11/22/2024, 18:53:13
 
 - Web Vitals -
-Core Web Vitals (LCP, CLS, TBT): failed
+Core Web Vitals (CWV) [LCP, CLS, TBT]: failed
 Largest Contentful Paint (LCP): poor
 Cumulative Layout Shift (CLS): needs improvements
 First Contentful Paint (FCP): needs improvements

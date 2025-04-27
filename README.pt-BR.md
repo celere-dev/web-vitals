@@ -68,7 +68,7 @@ Para usar este workflow, você precisa configurar as seguintes variáveis de amb
 
 Assunto:
 ```
-exemplo.com - Core Web Vitals: reprovado - Desempenho: 41
+Desempenho: 41 - CWV: reprovado - exemplo.com
 ```
 
 Texto:
@@ -77,7 +77,7 @@ URL: https://exemplo.com
 Criado em: 22/11/2024, 18:53:48
 
 - Web Vitals -
-Core Web Vitals (LCP, CLS, TBT): reprovado
+Core Web Vitals (CWV) [LCP, CLS, TBT]: reprovado
 Largest Contentful Paint (LCP): ruins
 Cumulative Layout Shift (CLS): precisa melhorar
 First Contentful Paint (FCP): precisa melhorar
